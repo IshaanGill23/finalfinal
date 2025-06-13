@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta information for the page (character encoding, viewport, and title) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Mood Player</title>
+    <!-- Linking the external CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* General Styles */
+      .mood-section {
+        text-align: center; /* Centers content in the mood section */
+        max-width: 800px; /* Limits the width of the section */
+        margin: 0 auto; /* Centers the section horizontally */
+        transition: background 1s ease; /* Smooth background transition */
+      }
+
+      .mood-section h2 {
+        font-size: 2.5rem; /* Sets the font size for the heading */
+        color: #333; /* Text color */
+        margin-bottom: 1rem; /* Adds space below the heading */
+      }
+
+      .mood-buttons {
+        display: flex; /* Uses Flexbox for button layout */
+        justify-content: center; /* Centers buttons horizontally */
+        flex-wrap: wrap; /* Allows buttons to wrap to a new line if needed */
+      }
+
+      .mood-buttons label {
+        background-color: #fff; /* White background for the buttons */
+        border: 2px solid #ccc; /* Light gray border */
+        border-radius: 8px; /* Rounded corners */
+        font-size: 1.2rem; /* Font size for the labels */
+        padding: 10px 20px; /* Padding inside the buttons */
+        margin: 0.5rem; /* Margin around the buttons */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+        transition: transform 0.3s ease; /* Smooth transition for scale effect */
+        display: inline-block; /* Ensures label behaves like a block-level element */
+      }
+
+      .mood-buttons label:hover {
+        transform: scale(1.1); /* Slightly enlarges the button on hover */
+      }
+
+      .mood-buttons input[type="radio"] {
+        display: none; /* Hides the radio buttons */
+      }
+
+      /* Video Player Styles */
+      .video-player {
+        margin-top: 2rem; /* Adds space above the video player */
+        text-align: center; /* Centers the video player */
+      }
+
+      iframe {
+        width: 100%; /* Makes the iframe full width */
+        height: 315px; /* Sets the height of the iframe */
+        border: none; /* Removes the border from the iframe */
+        display: none; /* Initially hides the iframe */
+        margin-top: 1rem; /* Adds space above the iframe */
+        border-radius: 8px; /* Rounds the corners of the iframe */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Adds shadow to the iframe */
+        opacity: 0; /* Initially hides the iframe using opacity */
+        transition: opacity 1s ease; /* Smooth transition for opacity */
+      }
+
+      /* Shows the iframe when a mood is selected */
+      .mood-happy:checked ~ .video-player .happy-embed,
+      .mood-sad:checked ~ .video-player .sad-embed,
+      .mood-energetic:checked ~ .video-player .energetic-embed,
+      .mood-calm:checked ~ .video-player .calm-embed,
+      .mood-romantic:checked ~ .video-player .romantic-embed {
+        display: block; /* Displays the iframe */
+        opacity: 1; /* Makes the iframe visible */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+      <nav class="navbar">
+        <!-- Music App Logo (clickable to open modal) -->
+        <img
+          src="images/musiclogo.webp"
+          alt="Music App Logo"
+          class="logo"
+          id="openModal" />
+
+        <!-- Spacer between the logo and navigation links -->
+        <div class="spacer"></div>
+
+        <!-- Navigation links to different pages -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Library.html">Library</a></li>
+          <li><a href="Review's.html">Reviews</a></li>
+          <li><a href="mood.html">Mood Page</a></li>
+        </ul>
+
+        <!-- Search Form (allows users to search content) -->
+        <form
+          class="search-form"
+          onsubmit="event.preventDefault(); alert('Searching for: ' + document.getElementById('searchInput').value);">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            aria-label="Search" />
+          <button type="submit">Go</button>
+        </form>
+      </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <section class="mood-section" aria-labelledby="mood-heading">
+        <h2 id="mood-heading">Pick Your Mood</h2>
+
+        <!-- Mood selection buttons -->
+        <div class="mood-buttons">
+          <label>
+            <input
+              type="radio"
+              name="mood"
+              class="mood-happy"
+              aria-label="Happy mood" />
+            😊 Happy
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="mood"
+              class="mood-sad"
+              aria-label="Sad mood" />
+            😢 Sad
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="mood"
+              class="mood-energetic"
+              aria-label="Energetic mood" />
+            ⚡ Hyper
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="mood"
+              class="mood-calm"
+              aria-label="Calm mood" />
+            🌙 Calm
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="mood"
+              class="mood-romantic"
+              aria-label="Romantic mood" />
+            ❤️ Romantic
+          </label>
+        </div>
+
+        <!-- YouTube embeds for each mood (will display based on selected mood) -->
+        <div class="video-player">
+          <!-- Happy mood video -->
+          <iframe
+            class="happy-embed"
+            data-src="https://www.youtube.com/embed/42PVUFs-bN4"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+
+          <!-- Sad mood video -->
+          <iframe
+            class="sad-embed"
+            data-src="https://www.youtube.com/embed/3XqqkrJENB4"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+          <!-- Energetic mood video -->
+          <iframe
+            class="energetic-embed"
+            data-src="https://www.youtube.com/embed/DbiNZnApiSE"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+          <!-- Calm mood video -->
+          <iframe
+            class="calm-embed"
+            data-src="https://www.youtube.com/embed/UfcAVejslrU"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+          <!-- Romantic mood video -->
+          <iframe
+            class="romantic-embed"
+            data-src="https://www.youtube.com/embed/b3KMNIowUSo"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Ishaan. All rights reserved.</p>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            aria-label="Instagram">
+            <img src="images/insta.jpg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            aria-label="Twitter">
+            <img src="images/xlogo.png" alt="Twitter" />
+          </a>
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            aria-label="YouTube">
+            <img src="images/yotube.jpg" alt="YouTube" />
+          </a>
+          <a href="https://telegram.org/" target="_blank" aria-label="Telegram">
+            <img src="images/telegram.jpg" alt="Telegram" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Authentication Modal for sign-up and login -->
+    <div class="modal" id="authModal">
+      <div class="modal-content">
+        <div id="formContainer">
+          <h2>Sign up / Log in</h2>
+          <form id="loginForm">
+            <label for="username">Username:</label><br />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required /><br /><br />
+            <label for="password">Password:</label><br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required /><br /><br />
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+        <div id="loggedInMessage" style="display: none">
+          <h2>You are now logged in</h2>
+          <button id="logoutBtn" class="submit-btn">Log Out</button>
+          <button id="closeModal" class="submit-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linking external JavaScript file -->
+    <script src="form.js"></script>
+  </body>
+</html>

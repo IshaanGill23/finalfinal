@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta information and title of the page -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist library</title>
+
+    <!-- Linking the external CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Header Section: Contains the logo and navigation bar -->
+    <header>
+      <nav class="navbar">
+        <!-- Music App Logo, clickable to open modal -->
+        <img
+          src="images/musiclogo.webp"
+          alt="Music App Logo"
+          class="logo"
+          id="openModal" />
+
+        <!-- Spacer between logo and navigation links -->
+        <div class="spacer"></div>
+
+        <!-- Navigation links to different pages -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Library.html">Library</a></li>
+          <li><a href="Review's.html">Reviews</a></li>
+          <li><a href="mood.html">Mood Page</a></li>
+        </ul>
+
+        <!-- Search Form: Allows users to search for content -->
+        <form
+          class="search-form"
+          onsubmit="event.preventDefault(); alert('Searching for: ' + document.getElementById('searchInput').value);">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            aria-label="Search" />
+          <button type="submit">Go</button>
+        </form>
+      </nav>
+    </header>
+
+    <!-- Main Section: Main content of the page -->
+    <main>
+      <!-- Featured Musicians Section -->
+      <section aria-labelledby="library-heading">
+        <h2 id="library-heading">Featured Musicians</h2>
+      </section>
+
+      <!-- Artist Photos Section: Displaying the list of featured artists -->
+      <section aria-labelledby="artist-heading">
+        <div class="artist-photos">
+          <!-- Each artist is clickable and will show a bio when clicked -->
+          <div
+            class="artist"
+            onclick="showBio('Mac DeMarco', 'Mac DeMarco is a Canadian singer-songwriter and multi-instrumentalist known for his laid-back, dreamy sound that blends indie rock with lo-fi aesthetics. Born in British Columbia, DeMarco rose to fame with his 2012 album 2, which showcased his quirky persona and jangly guitar style. His music often explores themes of youth, relationships, and everyday life, earning him a cult following and critical acclaim.')">
+            <img src="images/Mac.jpg" alt="Mac DeMarco" />
+            <p class="artist-name">Mac DeMarco</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Mitski', 'Mitski is a Japanese-American singer and songwriter known for her emotionally raw lyrics and genre-blending style. With a background in classical music, she combines elements of indie rock, pop, and punk to create deeply personal songs about identity, love, and longing. Her breakout album Be the Cowboy solidified her as one of indie music\'s most compelling voices.')">
+            <img src="images/mistski.jpg" alt="Mitski" />
+            <p class="artist-name">Mitski</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Strawberry Guy', 'Strawberry Guy is a British indie artist and producer known for his lush, orchestral dream pop sound. Originally a keyboardist for the band The Orielles, he launched his solo career with tracks like Mrs Magic, which gained popularity for its nostalgic, cinematic feel. His music evokes a sense of timeless melancholy and introspection.')">
+            <img src="images/strawberry guy.jpg" alt="Strawberry Guy" />
+            <p class="artist-name">Strawberry Guy</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Queen', 'Queen is a legendary British rock band formed in 1970, known for their theatrical style and genre-defying music. Fronted by the charismatic Freddie Mercury, Queen released timeless hits such as Bohemian Rhapsody, We Will Rock You, and Don\'t Stop Me Now. Their blend of opera, hard rock, and pop made them one of the most innovative and influential bands in music history.')">
+            <img src="images/Queen.jpg" alt="Queen" />
+            <p class="artist-name">Queen</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Gunna', 'Gunna is an American rapper, singer, and songwriter known for his smooth, melodic flows and collaborations with artists like Young Thug and Lil Baby. Emerging from the Atlanta trap scene, Gunna gained recognition with projects like Drip Season 3 and Wunna. His music often explores themes of luxury, fashion, and success.')">
+            <img src="images/gunna.webp" alt="Gunna" />
+            <p class="artist-name">Gunna</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('ASAP Rocky', 'ASAP Rocky is an American rapper, record producer, and fashion icon known for his charismatic flow and eclectic style. A key member of the A$AP Mob, he rose to prominence with his 2011 mixtape Live.Love.A$AP and has since released critically acclaimed albums blending hip-hop with psychedelic and experimental sounds.')">
+            <img src="images/asaprocky.webp" alt="ASAP Rocky" />
+            <p class="artist-name">ASAP Rocky</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('J. Cole', 'J. Cole is an American rapper, songwriter, and producer praised for his storytelling and introspective lyrics. Emerging in the early 2010s, he has built a loyal fanbase with albums like 2014 Forest Hills Drive and KOD. Cole often addresses social issues, personal growth, and the complexities of fame in his music.')">
+            <img src="images/J cole.webp" alt="J. Cole" />
+            <p class="artist-name">J. Cole</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Kanye West', 'Kanye West is an American rapper, producer, and fashion designer known for his innovation and controversy. From his debut album The College Dropout to genre-shifting works like Yeezus and Donda, Kanye has consistently pushed musical boundaries. His influence on modern hip-hop and pop culture is immense and often debated.')">
+            <img src="images/kanye.jpg" alt="Kanye West" />
+            <p class="artist-name">Kanye West</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Black Sabbath', 'Black Sabbath is a pioneering English rock band often credited with creating heavy metal. Formed in Birmingham in the late 1960s, the band\'s dark, powerful sound was defined by Tony Iommi\'s guitar riffs and Ozzy Osbourne\'s haunting vocals. Albums like Paranoid and Master of Reality remain iconic in rock history.')">
+            <img src="images/black.jpg" alt="Black Sabbath" />
+            <p class="artist-name">Black Sabbath</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Rolling Stones', 'The Rolling Stones are a legendary British rock band formed in 1962, known for their gritty sound and rebellious image. With Mick Jagger and Keith Richards at the helm, they produced rock staples like Paint It Black, Gimme Shelter, and (I Can\'t Get No) Satisfaction. Their influence spans generations and genres.')">
+            <img src="images/rollingstone.jpg" alt="Rolling Stones" />
+            <p class="artist-name">Rolling Stones</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('Frank Ocean', 'Frank Ocean is an American singer, songwriter, and producer known for his introspective lyrics and genre-bending music. Rising to fame with his mixtape Nostalgia, Ultra and albums like Channel Orange and Blonde, Ocean explores themes of identity, love, and vulnerability through emotionally rich storytelling.')">
+            <img src="images/frankocean.webp" alt="Frank Ocean" />
+            <p class="artist-name">Frank Ocean</p>
+          </div>
+
+          <div
+            class="artist"
+            onclick="showBio('The Weeknd', 'The Weeknd, born Abel Tesfaye, is a Canadian singer and songwriter known for his haunting voice and dark, moody R&B sound. His music often delves into themes of love, fame, and excess. With hits like Blinding Lights and The Hills, he has become one of the most influential artists of the 2010s and beyond.')">
+            <img src="images/the weeknd.jpg" alt="The Weeknd" />
+            <p class="artist-name">The Weeknd</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Authentication Modal: For user sign-up or login -->
+      <div class="modal" id="authModal">
+        <div class="modal-content">
+          <!-- Sign Up/Login Form -->
+          <div id="formContainer">
+            <h2>Sign up / Log in</h2>
+            <form id="loginForm">
+              <label for="username">Username:</label><br />
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required /><br /><br />
+              <label for="password">Password:</label><br />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required /><br /><br />
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>
+
+          <!-- Logged in message -->
+          <div id="loggedInMessage" style="display: none">
+            <h2>You are now logged in</h2>
+            <button id="logoutBtn" class="submit-btn">Log Out</button>
+            <button id="closeModal" class="submit-btn">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Artist Bio Modal: Shows the artist's biography -->
+      <div class="artist-bio" id="artistBio">
+        <h3 id="artistName"></h3>
+        <p id="bioText"></p>
+        <button class="close-bio" onclick="closeBio()">Close</button>
+      </div>
+    </main>
+
+    <!-- Footer Section: Contains copyright and social links -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Ishaan. All rights reserved.</p>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            aria-label="Instagram">
+            <img src="images/insta.jpg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            aria-label="Twitter">
+            <img src="images/xlogo.png" alt="Twitter" />
+          </a>
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            aria-label="YouTube">
+            <img src="images/yotube.jpg" alt="YouTube" />
+          </a>
+          <a href="https://telegram.org/" target="_blank" aria-label="Telegram">
+            <img src="images/telegram.jpg" alt="Telegram" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- External JavaScript File -->
+    <script src="form.js"></script>
+  </body>
+</html>

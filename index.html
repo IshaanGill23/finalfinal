@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for character set and responsive viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title and CSS links -->
+    <title>Mood Waves play</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Internal CSS styles -->
+    <style>
+      /* Styles for the horizontal scrolling container */
+      .scroll-container {
+        display: flex;
+        position: relative;
+        overflow-x: auto;
+        gap: 1rem;
+        scroll-behavior: smooth;
+      }
+
+      /* Styles for the song line container */
+      .song-line {
+        display: flex;
+        gap: 1rem;
+      }
+
+      /* Styles for scroll buttons */
+      .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      /* Left scroll button positioning */
+      .scroll-btn-left {
+        left: 0;
+      }
+
+      /* Right scroll button positioning */
+      .scroll-btn-right {
+        right: 0;
+      }
+
+      /* Responsive design for smaller screens */
+      @media (max-width: 768px) {
+        /* Adjust song line for mobile */
+        .song-line {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        /* Make covers responsive */
+        .cover {
+          max-width: 100%;
+          height: auto;
+        }
+
+        /* Adjust scroll buttons for mobile */
+        .scroll-btn {
+          font-size: 1.2rem;
+          padding: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Section with navigation -->
+    <header>
+      <nav class="navbar">
+        <!-- Logo that also opens modal -->
+        <img
+          src="images/musiclogo.webp"
+          alt="Music App Logo"
+          class="logo"
+          id="openModal" />
+        <!-- Spacer for layout -->
+        <div class="spacer"></div>
+        <!-- Navigation links -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Library.html">Library</a></li>
+          <li><a href="Review's.html">Reviews</a></li>
+          <li><a href="mood.html">Mood Page</a></li>
+        </ul>
+        <!-- Search form with JavaScript alert on submit -->
+        <form
+          class="search-form"
+          onsubmit="event.preventDefault(); alert('Searching for: ' + document.getElementById('searchInput').value);">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            aria-label="Search" />
+          <button type="submit">Go</button>
+        </form>
+      </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+      <!-- Mood section heading -->
+      <h1 id="moods">Mood Waves</h1>
+
+      <!-- Song Lines section -->
+      <section aria-labelledby="moods">
+        <!-- First song line - Trending Music -->
+        <article>
+          <div class="song-line-subtext">
+            <p>Trending Music.</p>
+          </div>
+
+          <!-- Scrollable container for first song line -->
+          <div class="scroll-container">
+            <!-- Left scroll button -->
+            <button
+              class="scroll-btn scroll-btn-left"
+              onclick="scrollLine(-1, 0)"
+              aria-label="Scroll Left">
+              &#10094;
+            </button>
+
+            <!-- Song items container -->
+            <div class="song-line">
+              <!-- Individual song items with data-video attributes for YouTube IDs -->
+              <div
+                class="song"
+                data-video="Xj6oW3dF9Gc"
+                aria-label="Break - Alex G">
+                <img
+                  src="images/Break.jpg"
+                  alt="Break Alex G cover"
+                  class="cover" />
+                <span>Break - Alex G</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="-KttTf9jyT8"
+                aria-label="Jobless Afternoon - Mitski">
+                <img
+                  src="images/Jobless afternoon.jpg"
+                  alt="Jobless Afternoon cover"
+                  class="cover" />
+                <span>Jobless Afternoon - Mitski</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="csJZ_9KOtNY"
+                aria-label="Salad Days - Mac DeMarco">
+                <img
+                  src="images/saladdays.jpg"
+                  alt="Salad Days cover"
+                  class="cover" />
+                <span>Salad Days - Mac DeMarco</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="jh0hu5uK1Ic"
+                aria-label="On The Level - Mac DeMarco">
+                <img
+                  src="images/on the level.jpg"
+                  alt="On the Level cover"
+                  class="cover" />
+                <span>On The Level - Mac DeMarco</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="pQsF3pzOc54"
+                aria-label="Chamber of Reflection - Mac DeMarco">
+                <img
+                  src="images/saladdays.jpg"
+                  alt="Chamber of Reflection cover"
+                  class="cover" />
+                <span>Chamber of Reflection - Mac DeMarco</span>
+              </div>
+            </div>
+
+            <!-- Right scroll button -->
+            <button
+              class="scroll-btn scroll-btn-right"
+              onclick="scrollLine(1, 0)"
+              aria-label="Scroll Right">
+              &#10095;
+            </button>
+          </div>
+        </article>
+
+        <!-- Second song line - Music To Relax To -->
+        <article>
+          <div class="song-line-subtext">
+            <p>Music To Relax To.</p>
+          </div>
+
+          <!-- Scrollable container for second song line -->
+          <div class="scroll-container">
+            <!-- Left scroll button -->
+            <button
+              class="scroll-btn scroll-btn-left"
+              onclick="scrollLine(-1, 1)"
+              aria-label="Scroll Left">
+              &#10094;
+            </button>
+
+            <!-- Song items container -->
+            <div class="song-line">
+              <!-- Individual song items -->
+              <div
+                class="song"
+                data-video="I2_r94MwW18"
+                aria-label="Ode To Viceroy - Mac DeMarco">
+                <img
+                  src="images/on the level.jpg"
+                  alt="Ode To Viceroy cover"
+                  class="cover" />
+                <span>Ode To Viceroy - Mac DeMarco</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="0qlvKgm-WXM"
+                aria-label="F Song - Strawberry Guy">
+                <img src="images/f-song.jpg" alt="F Song cover" class="cover" />
+                <span>F Song - Strawberry Guy</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="3dZczoNnFWI"
+                aria-label="Mrs Magic - Strawberry Guy">
+                <img
+                  src="images/mrs magic.jpg"
+                  alt="Mrs Magic cover"
+                  class="cover" />
+                <span>Mrs Magic - Strawberry Guy</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="kfhdaJ4H-34"
+                aria-label="Without you - Strawberry Guy">
+                <img
+                  src="images/without you.jpg"
+                  alt="Without You cover"
+                  class="cover" />
+                <span>Without You - Strawberry Guy</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="MelI_w9IppU"
+                aria-label="What would I do - Strawberry Guy">
+                <img
+                  src="images/what would i do.jpg"
+                  alt="What would I do cover"
+                  class="cover" />
+                <span>What would I do - Strawberry Guy</span>
+              </div>
+            </div>
+
+            <!-- Right scroll button -->
+            <button
+              class="scroll-btn scroll-btn-right"
+              onclick="scrollLine(1, 1)"
+              aria-label="Scroll Right">
+              &#10095;
+            </button>
+          </div>
+        </article>
+
+        <!-- Third song line - Timeless Classics -->
+        <article>
+          <div class="song-line-subtext">
+            <p>Timeless Classics.</p>
+          </div>
+
+          <!-- Scrollable container for third song line -->
+          <div class="scroll-container">
+            <!-- Left scroll button -->
+            <button
+              class="scroll-btn scroll-btn-left"
+              onclick="scrollLine(-1, 2)"
+              aria-label="Scroll Left">
+              &#10094;
+            </button>
+
+            <!-- Song items container -->
+            <div class="song-line">
+              <!-- Individual song items -->
+              <div
+                class="song"
+                data-video="fJ9rUzIMcZQ"
+                aria-label="Bohemian Rhapsody - Queen">
+                <img
+                  src="images/bohemian rhapsody.jpg"
+                  alt="Bohemian Rhapsody cover"
+                  class="cover" />
+                <span>Bohemian Rhapsody - Queen</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="HgzGwKwLmgM"
+                aria-label="Don't Stop Me Now - Queen">
+                <img
+                  src="images/dont stop.jpg"
+                  alt="Don't Stop Me Now cover"
+                  class="cover" />
+                <span>Don't Stop Me Now - Queen</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="kijpcUv-b8M"
+                aria-label="Somebody to Love - Queen">
+                <img
+                  src="images/bohemian rhapsody.jpg"
+                  alt="Somebody to Love cover"
+                  class="cover" />
+                <span>Somebody to Love - Queen</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="rY0WxgSXdEE"
+                aria-label="Another One Bites the Dust - Queen">
+                <img
+                  src="images/another one.jpg"
+                  alt="Another One Bites the Dust cover"
+                  class="cover" />
+                <span>Another One Bites the Dust - Queen</span>
+              </div>
+
+              <div
+                class="song"
+                data-video="2ZBtPf7FOoM"
+                aria-label="Killer Queen - Queen">
+                <img
+                  src="images/killer queen.jpg"
+                  alt="Killer Queen cover"
+                  class="cover" />
+                <span>Killer Queen - Queen</span>
+              </div>
+            </div>
+
+            <!-- Right scroll button -->
+            <button
+              class="scroll-btn scroll-btn-right"
+              onclick="scrollLine(1, 2)"
+              aria-label="Scroll Right">
+              &#10095;
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Modal Login Section -->
+    <section>
+      <div class="modal" id="authModal">
+        <div class="modal-content">
+          <!-- Form container that toggles between login and logged in state -->
+          <div id="formContainer">
+            <h2>Sign up / Log in</h2>
+
+            <!-- Login form -->
+            <form id="loginForm">
+              <label for="username">Username:</label><br />
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required /><br /><br />
+
+              <label for="password">Password:</label><br />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required /><br /><br />
+
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>
+
+          <!-- Logged in message that shows after successful login -->
+          <div id="loggedInMessage" style="display: none">
+            <h2>You are now logged in</h2>
+            <button id="logoutBtn" class="submit-btn">Log Out</button>
+            <button id="closeModal" class="submit-btn">Close</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Mini Player (fixed position) -->
+    <aside
+      id="miniPlayer"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #111;
+        color: white;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        width: 320px;
+        flex-direction: column;
+      ">
+      <!-- Container for YouTube player -->
+      <div id="playerContainer" style="width: 100%; aspect-ratio: 16 / 9"></div>
+
+      <!-- Now playing title -->
+      <p id="miniTitle" style="margin: 0.5rem 0 0">Now Playing</p>
+
+      <!-- Close button for mini player -->
+      <button
+        onclick="closeMiniPlayer()"
+        style="
+          background: #444;
+          color: white;
+          border: none;
+          padding: 0.4rem 1rem;
+          border-radius: 5px;
+          margin-top: 0.5rem;
+        ">
+        Close
+      </button>
+    </aside>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Copyright notice -->
+        <p>&copy; 2025 Ishaan. All rights reserved.</p>
+
+        <!-- Social media links -->
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            aria-label="Instagram">
+            <img src="images/insta.jpg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            aria-label="Twitter">
+            <img src="images/xlogo.png" alt="Twitter" />
+          </a>
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            aria-label="YouTube">
+            <img src="images/yotube.jpg" alt="YouTube" />
+          </a>
+          <a href="https://telegram.org/" target="_blank" aria-label="telegram">
+            <img src="images/telegram.jpg" alt="telegram" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript file link -->
+    <script src="form.js"></script>
+  </body>
+</html>

@@ -1,0 +1,564 @@
+/* ========== BASIC RESET ========== */
+/* Remove default spacing and set box-sizing to border-box for consistent sizing across all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply general styles to the entire body of the page */
+body {
+  background-color: #2f2c2c; /* Dark theme background for better contrast */
+  font-family: "Poppins", sans-serif; /* Clean and modern sans-serif font for better readability */
+  overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+  color: #000000; /* Default text color (will be overridden in specific elements) */
+}
+
+/* ========== NAVBAR STYLING ========== */
+/* Main container for navigation — fixed at the top and styled for contrast */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000; /* Black background for high contrast */
+  padding: 0.6rem 4%;
+  position: sticky; /* Keeps navbar at the top while scrolling */
+  top: 0;
+  z-index: 1000; /* Ensures it sits above other content */
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* Adds depth to the navbar */
+  border-bottom: 1px solid #333; /* Subtle bottom border */
+}
+
+/* Logo image inside the navbar — responsive size */
+.logo {
+  height: 6vw;
+  max-height: 35px;
+  cursor: pointer; /* Indicates it's clickable */
+}
+
+/* Container for navigation links */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none; /* Remove bullet points */
+}
+
+/* Individual navigation link styles */
+.nav-links a {
+  color: #e9d8d8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for links — Spotify green color + slight movement */
+.nav-links a:hover {
+  color: #1db954;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ========== MODAL ========== */
+/* Full-screen dark overlay to show modal dialogs */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000; /* Sits above all content */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+}
+
+/* Modal content box — centered and styled */
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 1.2rem;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* ========== BUTTON STYLE ========== */
+/* Primary button styling (e.g., submit, actions) */
+.submit-btn {
+  background-color: #1db954; /* Spotify green */
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 999px; /* Pill shape */
+  cursor: pointer;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Adds depth */
+}
+
+/* Hover effect for buttons — darker shade */
+.submit-btn:hover {
+  background-color: #14833b;
+}
+
+/* ========== SEARCH BAR ========== */
+/* Layout for search input + button in navbar/header */
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+/* Search input field styling */
+.search-form input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #020202;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 60%;
+  background-color: #2c2c2c;
+  color: #e9d8d8;
+}
+
+/* Search button appearance */
+.search-form button {
+  padding: 0.4rem 0.7rem;
+  margin-left: 0.4rem;
+  border: none;
+  background-color: #1db954;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover state for search button */
+.search-form button:hover {
+  background-color: #14833b;
+}
+
+/* ========== MOOD HEADINGS ========== */
+/* Big mood section title — responsive, centered with gradient background */
+#moods,
+#mood-heading,
+#library-heading,
+#reviewTitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin: 2rem 0;
+  font-size: 4vw;
+  padding: 1.5rem 5%;
+  text-align: center;
+  background: linear-gradient(to right, #111, #222);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== SCROLLABLE SONG STRIP ========== */
+/* Horizontal scrolling carousel of songs */
+.song-line {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1.5rem 5%;
+  background-color: #222;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+  scrollbar-width: none; /* Firefox hides scrollbar */
+  -ms-overflow-style: none; /* IE hides scrollbar */
+}
+
+/* Hide scrollbar for Chrome and Safari */
+.song-line::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========== SONG CARD ========== */
+/* Individual song item in the scroll list */
+.song {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #2a2a2a;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  color: #e9d8d8;
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.25s ease;
+  cursor: pointer;
+  min-width: 160px;
+  flex-shrink: 0;
+  border: 1px solid #444;
+}
+
+/* Hover effect for song cards */
+.song:hover {
+  background-color: #1db954;
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 6px 15px rgba(29, 185, 84, 0.7);
+}
+
+/* ========== ALBUM COVER INSIDE SONG CARD ========== */
+/* Album cover styling */
+.cover {
+  width: 9vw; /* Width relative to viewport width */
+  height: 9vw; /* Height relative to viewport width */
+  max-width: 55px; /* Max width */
+  max-height: 55px; /* Max height */
+  border-radius: 6px; /* Rounded corners */
+  object-fit: cover; /* Ensure image covers area */
+  border: 2px solid #1db954; /* Green border */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* Shadow effect */
+  transition: transform 0.3s ease; /* Smooth transformation */
+}
+
+/* Animation on hover for album cover */
+.song:hover .cover {
+  transform: rotate(3deg) scale(1.05); /* Rotate and slightly enlarge */
+}
+
+/* ========== FOOTER ========== */
+/* Footer container styling */
+.footer {
+  background-color: #1e1e1e; /* Dark background */
+  color: #ccc; /* Light text */
+  padding: 2rem 1.5rem; /* Padding around footer */
+  text-align: center; /* Center the text */
+  border-top: 1px solid #333; /* Border on top */
+}
+
+/* Footer content container */
+.footer-content {
+  max-width: 1000px; /* Limit width */
+  margin: 0 auto; /* Center the content */
+}
+
+/* Footer paragraph styling */
+.footer-content p {
+  font-size: 0.95rem; /* Font size */
+  margin-bottom: 1rem; /* Bottom margin */
+  color: #aaa; /* Light grey color */
+}
+
+/* Social media icons container */
+.social-links {
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center the icons */
+  gap: 1.2rem; /* Space between icons */
+  flex-wrap: wrap; /* Wrap icons on smaller screens */
+}
+
+/* Social media icon link styles */
+.social-links a {
+  display: inline-block; /* Inline block for links */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover effects */
+}
+
+/* Social icon image styles */
+.social-links img {
+  width: 36px; /* Fixed size */
+  height: 36px; /* Fixed size */
+  border-radius: 50%; /* Circular icons */
+  filter: grayscale(100%) brightness(0.8); /* Desaturated by default */
+  transition: filter 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effects for social media icons */
+.social-links img:hover {
+  filter: none; /* Remove grayscale */
+  transform: scale(1.1); /* Enlarge icon slightly */
+  cursor: pointer; /* Pointer cursor */
+}
+
+/* ========== SCROLL BUTTONS ========== */
+/* Left and right scroll buttons */
+.scroll-btn {
+  position: absolute; /* Positioned absolutely */
+  top: 50%; /* Vertically center */
+  transform: translateY(-50%); /* Adjust for exact centering */
+  background-color: rgba(29, 185, 84, 0.6); /* Green with transparency */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 0.8rem; /* Padding */
+  font-size: 1.2rem; /* Font size */
+  cursor: pointer; /* Pointer cursor */
+  z-index: 100; /* Ensure it’s on top */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth hover transition */
+  border-radius: 50%; /* Circular buttons */
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.6); /* Green shadow */
+}
+
+/* Left scroll button positioning */
+.scroll-btn-left {
+  left: 0; /* Positioned on the left */
+}
+
+/* Right scroll button positioning */
+.scroll-btn-right {
+  right: 0; /* Positioned on the right */
+}
+
+/* Hover effect for scroll buttons */
+.scroll-btn:hover {
+  background-color: rgba(29, 185, 84, 0.8); /* Darker green */
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Tablet and mobile screen adjustments */
+@media (max-width: 768px) {
+  .song-line {
+    flex-wrap: wrap; /* Wrap song line elements */
+    justify-content: center; /* Center them */
+  }
+
+  /* Adjust album cover size for smaller screens */
+  .cover {
+    width: 18vw; /* Larger width for smaller screens */
+    height: 18vw; /* Larger height */
+    max-width: 70px; /* Max width */
+  }
+
+  /* Adjust song card font size and padding */
+  .song {
+    font-size: 0.95rem; /* Smaller text */
+    padding: 0.8rem 1rem; /* Adjusted padding */
+    min-width: 75vw; /* Min width for song card */
+  }
+
+  /* Adjust scroll button size */
+  .scroll-btn {
+    font-size: 1rem; /* Smaller font size */
+    padding: 0.6rem; /* Smaller padding */
+  }
+
+  /* Adjust navigation link size */
+  .nav-links a {
+    font-size: 0.95rem; /* Smaller text */
+  }
+
+  /* Adjust mood text size and padding */
+  #moods {
+    font-size: 6vw; /* Larger font for small screens */
+    padding: 1rem; /* Padding */
+  }
+
+  /* Adjust song line subtext size */
+  .song-line-subtext {
+    font-size: 1rem; /* Smaller text */
+  }
+}
+
+/* ========== OPTIONAL DESCRIPTION UNDER SONG LINES ========== */
+/* Subtext below song lines with italic style */
+.song-line-subtext {
+  color: #e9d8d8; /* Light grey color */
+  font-size: 1.2rem; /* Font size */
+  margin-top: 0.3rem; /* Space above the text */
+  width: 100%; /* Full width */
+  font-style: italic; /* Italicize the text */
+  text-align: center; /* Center the text */
+  font-weight: 500; /* Medium font weight */
+}
+
+/* ========== ARTIST GALLERY SECTION ========== */
+/* Grid layout for artist photo cards */
+.artist-photos {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  ); /* Responsive columns */
+  gap: 2rem; /* Space between cards */
+  padding: 2rem; /* Padding around the grid */
+  justify-items: center; /* Center grid items */
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 12px; /* Rounded corners */
+}
+
+/* Artist card style */
+.artist {
+  background-color: #2b2b2b; /* Dark background for card */
+  border: 2px solid #444; /* Border for card */
+  border-radius: 12px; /* Rounded corners */
+  width: 100%; /* Full width */
+  max-width: 220px; /* Maximum width */
+  height: 320px; /* Fixed height */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: space-between; /* Space between content */
+  padding: 1rem; /* Padding inside the card */
+  text-align: center; /* Center text */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Hover effect for artist card */
+.artist:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6); /* Darker shadow */
+}
+
+/* Artist image styling */
+.artist img {
+  width: 100%; /* Full width image */
+  height: 180px; /* Fixed height */
+  object-fit: cover; /* Cover the container */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Artist name styling */
+.artist-name {
+  margin-top: 0.75rem; /* Space above the name */
+  color: #f0f0f0; /* Light grey text */
+  font-size: 1.1rem; /* Font size */
+  font-weight: 500; /* Medium font weight */
+}
+
+/* ========== RESPONSIVE LAYOUT ========== */
+/* Adjust grid layout for smaller screens */
+@media (max-width: 768px) {
+  .artist-photos {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+  }
+}
+
+/* Further adjustment for very small screens */
+@media (max-width: 480px) {
+  .navbar .nav-links {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 0.5rem; /* Space between links */
+  }
+
+  .artist-photos {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+}
+
+/* ========== ARTIST BIO MODAL ========== */
+/* Modal pop-up for artist bios */
+.artist-bio {
+  display: none; /* Hidden by default */
+  position: fixed; /* Position fixed on screen */
+  top: 50%; /* Center modal vertically */
+  left: 50%; /* Center modal horizontally */
+  transform: translate(-50%, -50%); /* Center modal precisely */
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  padding: 3rem; /* Padding inside modal */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); /* Shadow effect */
+  z-index: 1000; /* Ensure modal appears above other elements */
+  width: 60%; /* Width of modal */
+  max-width: 800px; /* Maximum width */
+  min-height: 300px; /* Minimum height */
+  overflow-y: auto; /* Scroll if content exceeds height */
+}
+
+/* Close button for artist bio modal */
+.close-bio {
+  background-color: #1db954; /* Spotify green */
+  color: #fff; /* White text */
+  border: none; /* Remove border */
+  padding: 1rem 2rem; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 1rem; /* Space above button */
+}
+
+/* ========== MOOD SELECTOR SECTION ========== */
+/* Container for mood selection buttons */
+.mood-section {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center vertically */
+  min-height: 80vh; /* Take up at least 80% of viewport height */
+  text-align: center; /* Center text */
+}
+
+/* Layout for mood buttons */
+.mood-buttons {
+  display: flex; /* Flexbox layout */
+  flex-wrap: wrap; /* Wrap buttons to next line if needed */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 1rem; /* Space between buttons */
+  margin-top: 1.5rem; /* Space above buttons */
+}
+
+/* Individual mood buttons */
+.mood-buttons button {
+  background-color: #333; /* Dark background */
+  color: #000000; /* Black text */
+  border: none; /* No border */
+  padding: 1rem 2rem; /* Padding inside button */
+  font-size: 1.2rem; /* Button font size */
+  border-radius: 12px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Button shadow */
+}
+
+.mood-buttons button:hover {
+  background-color: #555; /* Darken on hover */
+  transform: translateY(-3px); /* Lift button on hover */
+}
+
+.mood-buttons button:focus {
+  outline: 3px solid #888; /* Focus outline */
+  outline-offset: 2px; /* Offset the outline */
+}
+
+/* MOOD AND LIBRARY HEADING STYLES */
+#mood-heading,
+#library-heading {
+  display: flex; /* Flexbox for alignment */
+  flex-wrap: wrap; /* Wrap content on smaller screens */
+  gap: 2rem; /* Space between elements */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: #fff; /* White text */
+  margin: 2rem 0; /* Spacing */
+  font-size: 4vw; /* Responsive font size */
+  padding: 1.5rem 5%; /* Inner spacing */
+  text-align: center; /* Center text */
+  background: linear-gradient(to right, #111, #222); /* Gradient background */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+}
+
+/* REVIEW TITLE STYLES */
+#reviewTitle {
+  display: flex; /* Flexbox for alignment */
+  flex-wrap: wrap; /* Wrap content on smaller screens */
+  gap: 2rem; /* Space between elements */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: #fff; /* White text */
+  margin: 2rem 0; /* Spacing */
+  font-size: 4vw; /* Responsive font size */
+  padding: 1.5rem 5%; /* Inner spacing */
+  text-align: center; /* Center text */
+  background: linear-gradient(to right, #111, #222); /* Gradient background */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+}
